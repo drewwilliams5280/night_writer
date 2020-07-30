@@ -19,6 +19,11 @@ class NightWriter
     # do the magic
     # send out an OUTPUT string
   end
+
+  def initial_output
+    "Created #{ARGV[1]} containing #{@reader.read.size} characters"
+  end
+
 end
 
 puts ARGV.inspect
