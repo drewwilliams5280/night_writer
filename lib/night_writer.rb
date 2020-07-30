@@ -21,9 +21,10 @@ class NightWriter
   end
 
   def initial_output
-    "Created #{ARGV[1]} containing #{@reader.read.size} characters"
+    "Created '#{ARGV[1]}' containing #{@reader.read.size} characters"
   end
 
 end
 
-puts ARGV.inspect
+night_writer = NightWriter.new
+puts night_writer.initial_output
