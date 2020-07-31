@@ -1,5 +1,6 @@
 require './lib/file_reader'
 require './lib/file_writer'
+require 'csv'
 
 class NightWriter
   attr_reader :reader, :writer
@@ -31,3 +32,4 @@ class NightWriter
 end
 
 # night_writer = NightWriter.new
+# require "pry"; binding.pry

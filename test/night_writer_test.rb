@@ -29,5 +29,11 @@ class NightWriterTest < Minitest::Test
     night_writer.initial_output
   end
 
+  def test_it_can_get_dictionary
+    ARGV.replace ["message.txt", "braille.txt"]
+    night_writer = NightWriter.new
+    assert_equal ("a".."z").to_a, night_writer.reader.dictionary.keys
+  end
+
 
 end
