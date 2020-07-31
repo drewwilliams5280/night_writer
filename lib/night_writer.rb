@@ -23,7 +23,15 @@ class NightWriter
   end
 
   def encode_to_braille(input)
-    "#{@reader.dictionary[input][0..1]}\n#{@reader.dictionary[input][2..3]}\n#{@reader.dictionary[input][4..5]}"
+    top_row = ""
+    middle_row = ""
+    bottom_row = ""
+    input.size.times do |num|
+      top_row += "#{@reader.dictionary[input[num]][0..1]}"
+      middle_row += "#{@reader.dictionary[input[num]][2..3]}"
+      bottom_row += "#{@reader.dictionary[input[num]][4..5]}"
+    end
+    "#{top_row}\n#{middle_row}\n#{bottom_row}"
   end
 
   def initial_output
@@ -32,5 +40,5 @@ class NightWriter
 
 end
 
-# night_writer = NightWriter.new
-# require "pry"; binding.pry
+night_writer = NightWriter.new
+require "pry"; binding.pry
