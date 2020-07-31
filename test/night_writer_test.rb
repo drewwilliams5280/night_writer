@@ -35,5 +35,11 @@ class NightWriterTest < Minitest::Test
     assert_equal ("a".."z").to_a, night_writer.reader.dictionary.keys
   end
 
+  def test_it_can_encode_to_braille
+    ARGV.replace ["message.txt", "braille.txt"]
+    night_writer = NightWriter.new
+    assert_equal "0.....", night_writer.encode_to_braille("a")
+  end 
+
 
 end
