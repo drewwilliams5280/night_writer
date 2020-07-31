@@ -13,7 +13,6 @@ class NightWriterTest < Minitest::Test
     night_writer = NightWriter.new
     assert_instance_of NightWriter, night_writer
     assert_instance_of FileReader, night_writer.reader
-    assert_instance_of FileWriter, night_writer.writer
   end
 
   def test_it_can_get_file_character_count
@@ -35,11 +34,17 @@ class NightWriterTest < Minitest::Test
     assert_equal ("a".."z").to_a, night_writer.reader.dictionary.keys
   end
 
-  def test_it_can_encode_to_braille
+  def test_it_can_encode_to_braille_with_single_letter
     ARGV.replace ["message.txt", "braille.txt"]
     night_writer = NightWriter.new
-    assert_equal "0.....", night_writer.encode_to_braille("a")
-  end 
+    assert_equal "0.\n..\n..", night_writer.encode_to_braille("a")
+  end
+
+  def test_it_can_encode_to_braille_with_any_amount_of_letters
+    ARGV.replace ["message.txt", "braille.txt"]
+    night_writer = NightWriter.new
+    assert_equal "0.0.\n..0.\n....", night_writer.encode_to_braille("ab")
+  end
 
 
 end
