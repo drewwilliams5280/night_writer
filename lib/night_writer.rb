@@ -11,10 +11,7 @@ class NightWriter
   end
 
   def encode_file_to_braille
-    # I wouldn't worry about testing this method
-    # unless you get everything else done
     plain = @reader.read.chomp
-    require "pry"; binding.pry
     braille = encode_to_braille(plain)
     filename = ARGV[1]
     File.open(filename, "w") do |file|
