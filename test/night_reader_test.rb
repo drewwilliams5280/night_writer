@@ -37,5 +37,19 @@ class NightReaderTest < Minitest::Test
     assert_equal "z", night_reader.reader.braille_to_character_dictionary["0..000"]
   end
 
+  def test_it_can_translate_braille_character_from_file
+    ARGV.replace ["braille.txt", "original_message.txt"]
+    night_reader = NightReader.new
+  end
+
+  def test_it_can_get_dictionary
+    ARGV.replace ["message.txt", "braille.txt"]
+    night_reader = NightReader.new
+    test_array = ("a".."z").to_a
+    space = " "
+    test_array << space
+    assert_equal test_array, night_reader.reader.character_to_braille_dictionary.keys
+  end
+
 
 end

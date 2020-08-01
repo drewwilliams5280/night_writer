@@ -56,4 +56,13 @@ class NightWriterTest < Minitest::Test
     night_writer.encode_with_character_limit
   end
 
+  def test_it_can_get_definitions
+    ARGV.replace ["message.txt", "braille.txt"]
+    night_writer = NightWriter.new
+    assert_equal "a", night_writer.reader.braille_to_character_dictionary["0....."]
+    assert_equal "b", night_writer.reader.braille_to_character_dictionary["0.0..."]
+    assert_equal "x", night_writer.reader.braille_to_character_dictionary["00..00"]
+    assert_equal "z", night_writer.reader.braille_to_character_dictionary["0..000"]
+  end
+
 end
