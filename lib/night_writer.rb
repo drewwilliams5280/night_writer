@@ -2,7 +2,7 @@ require './lib/file_reader'
 require 'csv'
 
 class NightWriter
-  attr_reader :reader, :writer
+  attr_reader :reader
 
   def initialize
     @reader = FileReader.new
@@ -32,7 +32,7 @@ class NightWriter
   end
 
   def encode_with_character_limit
-    split_up = @reader.read.scan(/.{1,80}/)
+    split_up = @reader.read.scan(/.{1,40}/)
     braille_split_up = split_up.map do |reader_string|
       encode_to_braille(reader_string)
     end.join("\n")
