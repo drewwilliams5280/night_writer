@@ -44,4 +44,4 @@ class NightWriter
 
 end
 
-NightWriter.new
+# NightWriter.new
