@@ -24,9 +24,9 @@ class NightWriter
     middle_row = ""
     bottom_row = ""
     input.size.times do |num|
-      top_row += "#{@reader.dictionary[input[num]][0..1]}"
-      middle_row += "#{@reader.dictionary[input[num]][2..3]}"
-      bottom_row += "#{@reader.dictionary[input[num]][4..5]}"
+      top_row += "#{@reader.character_to_braille_dictionary[input[num]][0..1]}"
+      middle_row += "#{@reader.character_to_braille_dictionary[input[num]][2..3]}"
+      bottom_row += "#{@reader.character_to_braille_dictionary[input[num]][4..5]}"
     end
     "#{top_row}\n#{middle_row}\n#{bottom_row}"
   end
@@ -44,4 +44,4 @@ class NightWriter
 
 end
 
-# night_writer = NightWriter.new
+NightWriter.new

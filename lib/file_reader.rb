@@ -4,7 +4,7 @@ class FileReader
     File.read(filename)
   end
 
-  def dictionary
+  def character_to_braille_dictionary
     braille_definitions = {}
     CSV.foreach('./data/dictionary.csv', headers: true) do |row|
     braille_definitions[row["letter"]] = row["braille"]

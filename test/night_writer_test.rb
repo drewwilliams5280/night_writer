@@ -34,7 +34,7 @@ class NightWriterTest < Minitest::Test
     test_array = ("a".."z").to_a
     space = " "
     test_array << space
-    assert_equal test_array, night_writer.reader.dictionary.keys
+    assert_equal test_array, night_writer.reader.character_to_braille_dictionary.keys
   end
 
   def test_it_can_encode_to_braille_with_single_letter
