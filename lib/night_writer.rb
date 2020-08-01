@@ -1,5 +1,4 @@
 require './lib/file_reader'
-require './lib/file_writer'
 require 'csv'
 
 class NightWriter
@@ -7,12 +6,13 @@ class NightWriter
 
   def initialize
     @reader = FileReader.new
+    encode_file_to_braille
     puts initial_output
   end
 
   def encode_file_to_braille
     plain = @reader.read.chomp
-    braille = encode_to_braille(plain)
+    braille = encode_with_character_limit
     filename = ARGV[1]
     File.open(filename, "w") do |file|
       file.write braille
@@ -31,11 +31,17 @@ class NightWriter
     "#{top_row}\n#{middle_row}\n#{bottom_row}"
   end
 
+  def encode_with_character_limit
+    split_up = @reader.read.scan(/.{1,80}/)
+    braille_split_up = split_up.map do |reader_string|
+      encode_to_braille(reader_string)
+    end.join("\n")
+  end
+
   def initial_output
     "Created '#{ARGV[1]}' containing #{@reader.read.size} characters"
   end
 
 end
 
-night_writer = NightWriter.new
-require "pry"; binding.pry
+# night_writer = NightWriter.new
