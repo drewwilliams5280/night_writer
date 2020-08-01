@@ -47,10 +47,4 @@ class NightReaderTest < Minitest::Test
     assert_equal test_array, night_reader.reader.character_to_braille_dictionary.keys
   end
 
-  def test_it_can_translate_braille_character
-    ARGV.replace ["braille.txt", "original_message.txt"]
-    night_reader = NightReader.new
-    assert_equal "t", night_reader.translate_braille(".0000.")
-  end
-
 end
