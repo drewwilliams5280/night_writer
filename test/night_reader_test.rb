@@ -28,6 +28,14 @@ class NightReaderTest < Minitest::Test
     night_reader.initial_output
   end
 
+  def test_it_can_get_definitions
+    ARGV.replace ["braille.txt", "original_message.txt"]
+    night_reader = NightReader.new
+    assert_equal "a", night_reader.reader.braille_to_character_dictionary["0....."]
+    assert_equal "b", night_reader.reader.braille_to_character_dictionary["0.0..."]
+    assert_equal "x", night_reader.reader.braille_to_character_dictionary["00..00"]
+    assert_equal "z", night_reader.reader.braille_to_character_dictionary["0..000"]
+  end
 
 
 end
