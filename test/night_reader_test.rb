@@ -21,6 +21,13 @@ class NightReaderTest < Minitest::Test
     assert_equal 256, (night_reader.reader.read.size / 6) - (night_reader.reader.read.size / 6 / 80)
   end
 
+  def test_it_can_get_initial_output
+    ARGV.replace ["braille.txt", "original_message.txt"]
+    night_reader = NightReader.new
+    assert_equal "Created 'original_message.txt' containing 256 characters",
+    night_reader.initial_output
+  end
+
 
 
 end

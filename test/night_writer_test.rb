@@ -24,7 +24,7 @@ class NightWriterTest < Minitest::Test
   def test_it_can_give_initial_output
     ARGV.replace ["message.txt", "braille.txt"]
     night_writer = NightWriter.new
-    assert_equal "Created '#{ARGV[1]}' containing #{night_writer.reader.read.size} characters",
+    assert_equal "Created 'braille.txt' containing 256 characters",
     night_writer.initial_output
   end
 
