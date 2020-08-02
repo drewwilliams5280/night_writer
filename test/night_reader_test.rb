@@ -48,7 +48,7 @@ class NightReaderTest < Minitest::Test
   end
 
   def test_it_can_translate_from_braille_file
-    ARGV.replace ["message.txt", "braille.txt"]
+    ARGV.replace ["braille.txt", "original_message.txt"]
     night_reader = NightReader.new
     assert_equal "this is a test file that i need to be two hundred and fifty six characters long so that my project meets spec and so that my tests run this is a test file that i need to be two hundred and fifty six characters long so that my project meets spec yay woohooo",
     night_reader.translate_braille_file
