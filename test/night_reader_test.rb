@@ -39,12 +39,11 @@ class NightReaderTest < Minitest::Test
 
 
   def test_it_can_get_dictionary
-    ARGV.replace ["message.txt", "braille.txt"]
-    night_reader = NightReader.new
+    file_reader = FileReader.new
     test_array = ("a".."z").to_a
     space = " "
     test_array << space
-    assert_equal test_array, night_reader.reader.character_to_braille_dictionary.keys
+    assert_equal test_array, file_reader.character_to_braille_dictionary.keys
   end
 
   def test_it_can_translate_from_braille_file
