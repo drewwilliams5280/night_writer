@@ -42,13 +42,13 @@ class NightReaderTest < Minitest::Test
     test_array = ("a".."z").to_a
     space = " "
     test_array << space
-    assert_equal test_array, file_reader.character_to_braille_dictionary.keys
+    assert_equal test_array, file_reader.character_to_braille_dictionary.keys[0..26]
   end
 
   def test_it_can_translate_from_braille_file
     ARGV.replace ["braille.txt", "original_message.txt"]
     night_reader = NightReader.new
-    assert_equal "this is a test file that i need to be two hundred and fifty six characters long so that my project meets spec and so that my tests run this is a test file that i need to be two hundred and fifty six characters long so that my project meets spec yay woohooo",
+    assert_equal "this is a test file that i need to be two hundred and fifty six characters long so that my project meets spec and so that my tests run this is a test file that i need to be two hundred and fifty six characters long so that my project meets spec yay,woohoo!",
     night_reader.translate_braille_file
   end
 
