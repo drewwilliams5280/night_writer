@@ -33,7 +33,7 @@ class NightWriter
 
   def encode_with_character_limit
     split_up = @reader.read.scan(/.{1,40}/)
-    braille_split_up = split_up.map do |reader_string|
+    split_up.map do |reader_string|
       encode_to_braille(reader_string)
     end.join("\n")
   end
@@ -44,4 +44,5 @@ class NightWriter
 
 end
 
-# NightWriter.new
+# night_writer = NightWriter.new
+# require "pry"; binding.pry
