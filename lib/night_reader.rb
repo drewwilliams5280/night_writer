@@ -14,7 +14,6 @@ class NightReader
     "Created '#{ARGV[1]}' containing #{translate_braille_file.size} characters"
   end
 
-
   def translate_braille_file
     english_characters = ""
     braille = @reader.read.delete("\n")
