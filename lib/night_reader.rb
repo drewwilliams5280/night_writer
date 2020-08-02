@@ -21,7 +21,7 @@ class NightReader
     if braille.size > 240
       (braille.size / 240).times do
         40.times do |num|
-          english_characters += translate_braille_line(braille, num)
+          english_characters += translate_braille_character(braille, num)
           if num == 39
             braille.slice!(0..239)
           end
@@ -31,14 +31,14 @@ class NightReader
     english_characters += translate_last_line(braille, braille.size / 6)
   end
 
-  def translate_braille_line(braille, num)
+  def translate_braille_character(braille, character)
     text = ""
-    braille1 = braille[num * 2]
-    braille2 = braille[num * 2 + 1]
-    braille3 = braille[num * 2 + 80]
-    braille4 = braille[num * 2 + 81]
-    braille5 = braille[num * 2 + 160]
-    braille6 = braille[num * 2 + 161]
+    braille1 = braille[character * 2]
+    braille2 = braille[character * 2 + 1]
+    braille3 = braille[character * 2 + 80]
+    braille4 = braille[character * 2 + 81]
+    braille5 = braille[character * 2 + 160]
+    braille6 = braille[character * 2 + 161]
     text += @reader.braille_to_character_dictionary[braille1 + braille2 + braille3 + braille4 + braille5 + braille6]
   end
 
