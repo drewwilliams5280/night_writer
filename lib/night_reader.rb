@@ -6,10 +6,12 @@ class NightReader
   attr_reader :reader
   def initialize
     @reader = FileReader.new
+    decode_file_to_text
+    puts initial_output
   end
 
   def initial_output
-    "Created '#{ARGV[1]}' containing #{(@reader.read.size / 6) - (@reader.read.size / 6 / 80)} characters"
+    "Created '#{ARGV[1]}' containing #{translate_braille_file.size} characters"
   end
 
   def translate_braille_file
@@ -52,7 +54,14 @@ class NightReader
     last_line_characters
   end
 
+  def decode_file_to_text
+    text = translate_braille_file
+    filename = ARGV[1]
+    File.open(filename, "w") do |file|
+      file.write text
+    end
+  end
+
 end
 
-night_reader = NightReader.new
-night_reader.translate_braille_file
+# night_reader = NightReader.new

@@ -11,7 +11,6 @@ class NightWriter
   end
 
   def encode_file_to_braille
-    plain = @reader.read.chomp
     braille = encode_with_character_limit
     filename = ARGV[1]
     File.open(filename, "w") do |file|
