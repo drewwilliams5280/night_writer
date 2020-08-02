@@ -37,7 +37,6 @@ class NightReaderTest < Minitest::Test
     assert_equal "z", night_reader.reader.braille_to_character_dictionary["0..000"]
   end
 
-
   def test_it_can_get_dictionary
     file_reader = FileReader.new
     test_array = ("a".."z").to_a

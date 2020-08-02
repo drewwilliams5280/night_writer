@@ -36,7 +36,6 @@ class NightReader
     english_characters += translate_last_line(braille)
   end
 
-
   def translate_last_line(braille)
     last_line_characters = ""
     if braille.size > 0
@@ -64,4 +63,4 @@ class NightReader
 
 end
 
-# night_reader = NightReader.new
+NightReader.new
