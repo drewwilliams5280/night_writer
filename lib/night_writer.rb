@@ -43,5 +43,4 @@ class NightWriter
 
 end
 
-# night_writer = NightWriter.new
-# require "pry"; binding.pry
+NightWriter.new
