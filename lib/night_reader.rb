@@ -32,25 +32,19 @@ class NightReader
 
   def translate_braille_character(braille, character)
     text = ""
-    braille1 = braille[character * 2]
-    braille2 = braille[character * 2 + 1]
-    braille3 = braille[character * 2 + 80]
-    braille4 = braille[character * 2 + 81]
-    braille5 = braille[character * 2 + 160]
-    braille6 = braille[character * 2 + 161]
-    text += @reader.braille_to_character_dictionary[braille1 + braille2 + braille3 + braille4 + braille5 + braille6]
+    pair1 = braille[character * 2] + braille[character * 2 + 1]
+    pair2 = braille[character * 2 + 80] + braille[character * 2 + 81]
+    pair3 = braille[character * 2 + 160] + braille[character * 2 + 161]
+    text += @reader.braille_to_character_dictionary[pair1 + pair2 + pair3]
   end
 
   def translate_last_line(braille, size)
     last_line_characters = ""
     size.times do |num|
-      braille1 = braille[num * 2]
-      braille2 = braille[num * 2 + 1]
-      braille3 = braille[num * 2 + (size * 2)]
-      braille4 = braille[num * 2 + (size * 2 + 1)]
-      braille5 = braille[num * 2 + (size * 2 * 2)]
-      braille6 = braille[num * 2 + (size * 2 * 2 + 1)]
-      last_line_characters += @reader.braille_to_character_dictionary[braille1 + braille2 + braille3 + braille4 + braille5 + braille6]
+      pair1 = braille[num * 2] + braille[num * 2 + 1]
+      pair2 = braille[num * 2 + (size * 2)] + braille[num * 2 + (size * 2 + 1)]
+      pair3 = braille[num * 2 + (size * 2 * 2)] + braille[num * 2 + (size * 2 * 2 + 1)]
+      last_line_characters += @reader.braille_to_character_dictionary[pair1 + pair2 + pair3]
     end
     last_line_characters
   end
