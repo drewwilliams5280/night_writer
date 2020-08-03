@@ -30,7 +30,7 @@ class NightReader
     english_characters += translate_last_line(braille, braille.size / 6)
   end
 
-  def translate_braille_character(braille, character)
+  def translate_braille_character(braille, character_position)
     text = ""
     pair1 = braille[character * 2] + braille[character * 2 + 1]
     pair2 = braille[character * 2 + 80] + braille[character * 2 + 81]
