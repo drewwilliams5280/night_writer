@@ -19,6 +19,7 @@ class NightReaderTest < Minitest::Test
     ARGV.replace ["braille.txt", "original_message.txt"]
     night_reader = NightReader.new
     assert_equal 256, (night_reader.reader.read.size / 6) - (night_reader.reader.read.size / 6 / 80)
+    assert_equal 256, night_reader.translate_braille_file.size
   end
 
   def test_it_can_get_initial_output
